@@ -1,8 +1,6 @@
 package nl.maxvandeursen.ticketing.ticket;
 
-import nl.maxvandeursen.ticketing.ticket.TicketDto;
-import nl.maxvandeursen.ticketing.ticket.TicketRepository;
-import nl.maxvandeursen.ticketing.ticket.TicketService;
+import nl.maxvandeursen.ticketing.exception.PurchaseConditionViolationException;
 import nl.maxvandeursen.ticketing.traveler.*;
 import nl.maxvandeursen.ticketing.exception.InvalidTicketDateException;
 import nl.maxvandeursen.ticketing.exception.UndefinedTravelerException;
@@ -42,7 +40,7 @@ class TicketServiceTest {
         traveler = new TravelerDto();
         traveler.setUsername("");
         traveler.setCredit(BigDecimal.ZERO);
-        when(travelerService.getById(any())).thenAnswer(a -> Optional.of(traveler));
+        when(travelerService.getById(any())).thenReturn(Optional.of(traveler));
     }
 
     @Test
@@ -66,8 +64,18 @@ class TicketServiceTest {
     }
 
     @Test
+    void notEnoughCreditRaisesException() {
+        TicketDto ticketDto = new TicketDto();
+        ticketDto.setCost(Ticket.DEFAULT_COST);
+        ticketDto.setDate(LocalDate.now());
+
+        assertThrows(PurchaseConditionViolationException.class, () -> ticketService.createTicket(1L, ticketDto));
+    }
+
+    @Test
     void correctTicketIsReturned() throws Exception {
         TicketDto ticketDto = new TicketDto();
+        traveler.setCredit(Ticket.DEFAULT_COST);
         ticketDto.setDate(LocalDate.now());
         TicketDto returnDto = new TicketDto();
         when(ticketRepository.save(any())).thenReturn(returnDto);

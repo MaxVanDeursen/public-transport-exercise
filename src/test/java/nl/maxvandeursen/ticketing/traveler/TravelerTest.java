@@ -1,7 +1,6 @@
 package nl.maxvandeursen.ticketing.traveler;
 
 import nl.maxvandeursen.ticketing.ticket.Ticket;
-import nl.maxvandeursen.ticketing.traveler.Traveler;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

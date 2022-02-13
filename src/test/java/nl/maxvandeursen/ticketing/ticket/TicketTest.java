@@ -1,6 +1,5 @@
 package nl.maxvandeursen.ticketing.ticket;
 
-import nl.maxvandeursen.ticketing.ticket.Ticket;
 import nl.maxvandeursen.ticketing.traveler.Traveler;
 import org.junit.jupiter.api.Test;
 

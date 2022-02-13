@@ -1,6 +1,7 @@
 package nl.maxvandeursen.ticketing.traveler;
 
 import nl.maxvandeursen.ticketing.exception.InvalidTicketDateException;
+import nl.maxvandeursen.ticketing.exception.PurchaseConditionViolationException;
 import nl.maxvandeursen.ticketing.exception.UndefinedTravelerException;
 import nl.maxvandeursen.ticketing.ticket.TicketDto;
 import nl.maxvandeursen.ticketing.ticket.TicketService;
@@ -28,7 +29,8 @@ public class TravelerController {
     }
 
     @PostMapping("/travelers/{travelerId}/createTicket")
-    public TicketDto createTicket(@PathVariable("travelerId") Long travelerId, @RequestBody TicketDto ticket) throws UndefinedTravelerException, InvalidTicketDateException {
+    public TicketDto createTicket(@PathVariable("travelerId") Long travelerId, @RequestBody TicketDto ticket)
+            throws UndefinedTravelerException, InvalidTicketDateException, PurchaseConditionViolationException {
         return ticketService.createTicket(travelerId, ticket);
     }
 }

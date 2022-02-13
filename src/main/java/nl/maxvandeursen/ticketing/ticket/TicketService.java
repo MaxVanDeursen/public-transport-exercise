@@ -1,6 +1,7 @@
 package nl.maxvandeursen.ticketing.ticket;
 
 import nl.maxvandeursen.ticketing.exception.InvalidTicketDateException;
+import nl.maxvandeursen.ticketing.exception.PurchaseConditionViolationException;
 import nl.maxvandeursen.ticketing.exception.UndefinedTravelerException;
 import nl.maxvandeursen.ticketing.traveler.TravelerDto;
 import nl.maxvandeursen.ticketing.traveler.TravelerService;
@@ -17,13 +18,18 @@ public class TicketService {
     @Autowired
     private TravelerService travelerService;
 
-    public TicketDto createTicket(Long travelerId, TicketDto ticket) throws UndefinedTravelerException, InvalidTicketDateException {
+    public TicketDto createTicket(Long travelerId, TicketDto ticketDto) throws UndefinedTravelerException, InvalidTicketDateException, PurchaseConditionViolationException {
         TravelerDto traveler = travelerService.getById(travelerId).orElseThrow(() -> new UndefinedTravelerException(travelerId));
 
-        if (ticket.getDate() == null) {
+        if (ticketDto.getDate() == null) {
             throw InvalidTicketDateException.forUndefinedDate();
-        } else if (ticket.getDate().isBefore(LocalDate.now())) {
-            throw InvalidTicketDateException.forExpiredDate(ticket.getDate());
+        } else if (ticketDto.getDate().isBefore(LocalDate.now())) {
+            throw InvalidTicketDateException.forExpiredDate(ticketDto.getDate());
+        }
+
+        Ticket ticket = new Ticket(null, traveler.asTraveler(), ticketDto.getDate());
+        if (!traveler.toTraveler().canBuyTicket(ticket)) {
+            throw new PurchaseConditionViolationException();
         }
 
         return ticketRepository.save(TicketDto.fromTicket(new Ticket(null, traveler.asTraveler(), ticket.getDate())));

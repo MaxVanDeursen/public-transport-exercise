@@ -1,6 +1,7 @@
 package nl.maxvandeursen.ticketing;
 
 import nl.maxvandeursen.ticketing.exception.InvalidTicketDateException;
+import nl.maxvandeursen.ticketing.exception.PurchaseConditionViolationException;
 import nl.maxvandeursen.ticketing.exception.UndefinedTravelerException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler({InvalidTicketDateException.class, UndefinedTravelerException.class})
+    @ExceptionHandler({InvalidTicketDateException.class, UndefinedTravelerException.class, PurchaseConditionViolationException.class})
     public ResponseEntity<Map<String, Object>> handleErroneousRequests(Exception exception) {
         Map<String, Object> values = new HashMap<>();
         values.put("timestamp", ZonedDateTime.now());
