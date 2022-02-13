@@ -16,9 +16,18 @@ import java.util.Map;
 public class GlobalExceptionHandler {
     @ExceptionHandler({InvalidTicketDateException.class, UndefinedTravelerException.class, PurchaseConditionViolationException.class})
     public ResponseEntity<Map<String, Object>> handleErroneousRequests(Exception exception) {
+        return createResponseEntity(exception, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UndefinedTravelerException.class)
+    public ResponseEntity<Map<String, Object>> handleNotFoundExceptions(Exception exception) {
+        return createResponseEntity(exception, HttpStatus.NOT_FOUND);
+    }
+
+    private ResponseEntity<Map<String, Object>> createResponseEntity(Exception exception, HttpStatus status) {
         Map<String, Object> values = new HashMap<>();
         values.put("timestamp", ZonedDateTime.now());
         values.put("message", exception.getMessage());
-        return new ResponseEntity<>(values, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(values, status);
     }
 }
