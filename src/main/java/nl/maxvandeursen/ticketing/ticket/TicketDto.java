@@ -1,6 +1,6 @@
-package nl.maxvandeursen.ticketing.dto;
+package nl.maxvandeursen.ticketing.ticket;
 
-import nl.maxvandeursen.ticketing.domain.Ticket;
+import nl.maxvandeursen.ticketing.traveler.TravelerDto;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

@@ -1,4 +1,6 @@
-package nl.maxvandeursen.ticketing.domain;
+package nl.maxvandeursen.ticketing.ticket;
+
+import nl.maxvandeursen.ticketing.traveler.Traveler;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

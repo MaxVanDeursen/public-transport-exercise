@@ -1,11 +1,9 @@
-package nl.maxvandeursen.ticketing.controller;
+package nl.maxvandeursen.ticketing.traveler;
 
-import nl.maxvandeursen.ticketing.dto.TicketDto;
-import nl.maxvandeursen.ticketing.dto.TravelerDto;
 import nl.maxvandeursen.ticketing.exception.InvalidTicketDateException;
 import nl.maxvandeursen.ticketing.exception.UndefinedTravelerException;
-import nl.maxvandeursen.ticketing.service.TicketService;
-import nl.maxvandeursen.ticketing.service.TravelerService;
+import nl.maxvandeursen.ticketing.ticket.TicketDto;
+import nl.maxvandeursen.ticketing.ticket.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

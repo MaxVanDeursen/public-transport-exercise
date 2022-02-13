@@ -1,6 +1,4 @@
-package nl.maxvandeursen.ticketing.dto;
-
-import nl.maxvandeursen.ticketing.domain.Traveler;
+package nl.maxvandeursen.ticketing.traveler;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,6 +1,5 @@
-package nl.maxvandeursen.ticketing.repository;
+package nl.maxvandeursen.ticketing.traveler;
 
-import nl.maxvandeursen.ticketing.dto.TravelerDto;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

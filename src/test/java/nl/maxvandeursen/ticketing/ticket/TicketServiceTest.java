@@ -1,10 +1,11 @@
-package nl.maxvandeursen.ticketing.service;
+package nl.maxvandeursen.ticketing.ticket;
 
-import nl.maxvandeursen.ticketing.dto.TicketDto;
-import nl.maxvandeursen.ticketing.dto.TravelerDto;
+import nl.maxvandeursen.ticketing.ticket.TicketDto;
+import nl.maxvandeursen.ticketing.ticket.TicketRepository;
+import nl.maxvandeursen.ticketing.ticket.TicketService;
+import nl.maxvandeursen.ticketing.traveler.*;
 import nl.maxvandeursen.ticketing.exception.InvalidTicketDateException;
 import nl.maxvandeursen.ticketing.exception.UndefinedTravelerException;
-import nl.maxvandeursen.ticketing.repository.TicketRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,7 +1,5 @@
-package nl.maxvandeursen.ticketing.service;
+package nl.maxvandeursen.ticketing.traveler;
 
-import nl.maxvandeursen.ticketing.dto.TravelerDto;
-import nl.maxvandeursen.ticketing.repository.TravelerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

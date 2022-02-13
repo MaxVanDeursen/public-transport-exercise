@@ -1,5 +1,7 @@
-package nl.maxvandeursen.ticketing.exception;
+package nl.maxvandeursen.ticketing;
 
+import nl.maxvandeursen.ticketing.exception.InvalidTicketDateException;
+import nl.maxvandeursen.ticketing.exception.UndefinedTravelerException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

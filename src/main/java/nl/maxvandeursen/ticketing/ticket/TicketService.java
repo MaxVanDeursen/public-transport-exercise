@@ -1,11 +1,9 @@
-package nl.maxvandeursen.ticketing.service;
+package nl.maxvandeursen.ticketing.ticket;
 
-import nl.maxvandeursen.ticketing.domain.Ticket;
-import nl.maxvandeursen.ticketing.dto.TicketDto;
-import nl.maxvandeursen.ticketing.dto.TravelerDto;
 import nl.maxvandeursen.ticketing.exception.InvalidTicketDateException;
 import nl.maxvandeursen.ticketing.exception.UndefinedTravelerException;
-import nl.maxvandeursen.ticketing.repository.TicketRepository;
+import nl.maxvandeursen.ticketing.traveler.TravelerDto;
+import nl.maxvandeursen.ticketing.traveler.TravelerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
