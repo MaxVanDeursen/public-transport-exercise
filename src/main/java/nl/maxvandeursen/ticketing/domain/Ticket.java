@@ -7,11 +7,13 @@ import java.util.Objects;
 public final class Ticket {
     public static final BigDecimal DEFAULT_COST = BigDecimal.ONE;
 
+    private final Long id;
     private final Traveler traveler;
     private final LocalDate date;
     private final BigDecimal cost;
 
-    public Ticket(Traveler traveler, LocalDate date) {
+    public Ticket(Long id, Traveler traveler, LocalDate date) {
+        this.id = id;
         this.traveler = Objects.requireNonNull(traveler, "A defined traveler should be supplied.");
         this.date = Objects.requireNonNull(date, "A defined date should be supplied");
         this.cost = DEFAULT_COST;
@@ -19,6 +21,10 @@ public final class Ticket {
 
     public boolean isUsable() {
         return LocalDate.now().equals(date);
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Traveler getTraveler() {
